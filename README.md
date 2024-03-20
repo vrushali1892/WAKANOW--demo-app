@@ -27,5 +27,6 @@ I couldn't implement temp key functionality to login.
 - intall all dependencies => run command npm install
 - run the application => ng serve
 - start json server => npm run json:server
+- add db.json at root folder
 
 
