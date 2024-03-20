@@ -16,6 +16,7 @@ export class UsersComponent implements OnInit {
   showLoggedInUser: any;
   userid?: string;
   disableApprove: boolean = false;
+  userInfo: any = {};
 
   constructor(private userService: UserService, private toastrService: ToastrService) { }
 
@@ -32,20 +33,19 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  userInfo: any = {};
+  
   getUserDetails() {
     this.userService.getRegisteredUsers().subscribe((response: any) => {
       this.usersList = response;
       this.userInfo = this.usersList.find(u => u.id === this.userid);
-      console.log(this.userInfo);
-      this.usersList = this.usersList.filter(u => u.id !== this.userid);
-    
+     this.usersList = this.usersList.filter(u => u.id === this.userInfo.manageId);
     })
   }
 
-  updateOldAdmin() {
+  updateOldAdmin(approverId: string) {
     if(this.userInfo) {
       this.userInfo.isCurrentAdmin = false;
+      this.userInfo.manageId = approverId;
     }
     this.userService.updateRegisteredUser(this.userInfo)
       .subscribe(response => {
@@ -54,7 +54,7 @@ export class UsersComponent implements OnInit {
   }
 
   onApprove(data: any) {
-   this.updateOldAdmin();
+   this.updateOldAdmin(data.id);
     data.isApproved = true;
     data.isCurrentAdmin = true;
     this.userService.updateRegisteredUser(data)

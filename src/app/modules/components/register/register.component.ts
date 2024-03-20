@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   public registerForm!: FormGroup;
   public submitted: boolean = false;
   public showPassword: boolean = false;
+  private registeredUsers: any[] = [];
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private toastrService: ToastrService) { }
 
@@ -55,8 +56,11 @@ export class RegisterComponent implements OnInit {
       payload.job = '';
       payload.contact = '';
       payload.address = '';
+      payload.manageId = '';
       this.userService.registerUsers(payload)
         .subscribe(response => {
+          console.log(response);
+          this.updateManageId(response.id)
           this.toastrService.success('Registration done successfully!', 'Register', {
             positionClass: 'toast-top-right'
           });
@@ -66,4 +70,20 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  updateManageId(id: any) {
+    this.userService.getRegisteredUsers()
+    .subscribe(response => {
+      this.registeredUsers = response;
+      const currentAdminData = this.registeredUsers.find(u => u.isCurrentAdmin === true);
+      currentAdminData.manageId = id;
+      this.updateManageIdByRegisteredId(currentAdminData)
+    });
+  }
+
+  updateManageIdByRegisteredId(data: any) {
+    this.userService.updateUser(data, data.id)
+    .subscribe(response => {
+      console.log(response);
+    });
+  }
 }

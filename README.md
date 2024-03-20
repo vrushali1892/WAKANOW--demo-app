@@ -1,27 +1,31 @@
-# UserApp
+# User App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.5.
+## Default admin info
 
-## Development server
+ email: admin@gmail.com
+ password: admin
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## What you were able to do so far
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+I was able to perform below mentioned points:
 
-## Build
+- Once user is submitted, the first user is approved by an admin and then user can login.
+- Default user “admin” can only approve the first user, but every new user becomes an admin automatically once approved by the last user before them (similar process happens as stated above).
+- Users can signup by themselves without having to login, they can only login when they have been approved.
+- The users can only perform crud operation on the records they are admin for. that is remove, update existing records, a user cannot remove or update their own record.
+- Data can be persisted temporarily based on the current session using json server, Calls to a mocked or demo rest api is to show us how you call your apis
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Issues encountered and
 
-## Running unit tests
+I couldn't implement temp key functionality to login.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Any additional details to take into consideration in running and reviewing the assessment
 
-## Running end-to-end tests
+- install node.js
+- install angular cli version 12.2.5
+- intall all dependencies => run command npm install
+- run the application => ng serve
+- start json server => npm run json:server
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

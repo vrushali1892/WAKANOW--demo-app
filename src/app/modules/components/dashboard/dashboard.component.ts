@@ -14,6 +14,8 @@ export class DashboardComponent implements OnInit {
 
   usersData: UserDetails[] = [];
   userid?: string;
+  userInfo: any = {};
+
   constructor(private userService: UserService, private modalService: NgbModal, private toastrService: ToastrService) { }
 
   ngOnInit(): void {
@@ -32,7 +34,8 @@ export class DashboardComponent implements OnInit {
   getUsers() {
     this.userService.getRegisteredUsers().subscribe((response: any) => {
       this.usersData = response;
-      this.usersData = this.usersData.filter(u => u.id !== this.userid);
+      this.userInfo = this.usersData.find(u => u.id === this.userid);
+      this.usersData = this.usersData.filter(u => u.id === this.userInfo.manageId);
     })
   }
 
