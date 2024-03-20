@@ -1,0 +1,48 @@
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="card">
+        <h4 class="card-header">Login</h4>
+        <div class="card-body">
+            <form [formGroup]="loginForm">
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" formControlName="email" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                    </div>
+                    <small class="text-danger" *ngIf="emailErrors?.email">Email is
+                        invalid</small>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <input [type]="showPassword ? 'text' : 'password'" formControlName="password"
+                            class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i [ngClass]="{
+                                  'bi bi-eye-slash': !showPassword,
+                                  'bi bi-eye': showPassword
+                                }" (click)="toggleType()"></i>
+                            </span>
+                        </div>
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group text-right">
+                    <button class="btn btn-primary mr-2" (click)="login()">
+                        Login
+                    </button>
+                    <a routerLink="/register" class="btn btn-secondary">Register</a>
+                    <!-- <button class="btn btn-primary mr-2" (click)="signUp()">
+                        Sign Up
+                    </button> -->
+                </div>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            </form>
+        </div>
+    </div>
+</div>

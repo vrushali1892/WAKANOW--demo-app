@@ -1,0 +1,30 @@
+<div class="sidebar-opener" (click)="sidebarShow = !sidebarShow" *ngIf="authService.loggedIn">
+  <span class="menu-icon">
+      <i class="bi bi-list"></i>
+  </span>
+</div>
+
+<div class="sidebar-slider" [class.sidebar-slide-in]="sidebarShow">
+  <div class="sidebar-close" (click)="sidebarShow = !sidebarShow">
+      <i class="bi bi-x-lg"></i>
+  </div>
+  <div class="sidebar-content">
+      <h2>
+          <span> <i class="bi bi-person-circle"></i>
+              {{ authService.firstName | titlecase }}
+          </span>
+      </h2>
+      <nav>
+          <ul>
+              <li><a routerLink="/dashboard">Dashboard</a></li>
+              <li><a routerLink="/users">Users</a></li>
+              <li><a (click)="logout()">Logout</a></li>
+          </ul>
+      </nav>
+  </div>
+</div>
+
+<!-- main app container fluid-->
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>

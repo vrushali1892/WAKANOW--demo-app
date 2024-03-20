@@ -1,0 +1,28 @@
+{
+  "registeredUsers": [
+    {
+      "firstName": "Omkar",
+      "lastName": "Pedamkar",
+      "email": "omkarp@gmail.com",
+      "password": "omkar",
+      "isApproved": true,
+      "isCurrentAdmin": false,
+      "id": "XgaYfrZ",
+      "job": "",
+      "address": "",
+      "contact": ""
+    },
+    {
+      "firstName": "Vrushali",
+      "lastName": "Mhetre",
+      "email": "vrushu02@gmail.com",
+      "password": "123456",
+      "isApproved": true,
+      "isCurrentAdmin": true,
+      "job": "sda",
+      "contact": "9875653421",
+      "address": "mumbai",
+      "id": "3MFo9OX"
+    }
+  ]
+}

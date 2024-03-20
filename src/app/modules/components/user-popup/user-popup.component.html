@@ -1,0 +1,65 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{data.header}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="usersForm">
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" formControlName="firstName" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                <div *ngIf="f.firstName.errors.required">First Name is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" formControlName="lastName" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" formControlName="email" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+            </div>
+            <small class="text-danger" *ngIf="emailErrors?.email">Email is
+                invalid</small>
+        </div>
+        <div class="form-group">
+            <label for="job">Job</label>
+            <input type="text" formControlName="job" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.job.errors }" />
+            <div *ngIf="submitted && f.job.errors" class="invalid-feedback">
+                <div *ngIf="f.job.errors.required">Job is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" formControlName="address" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                <div *ngIf="f.address.errors.required">Address is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="contact">Contact</label>
+            <input type="text" formControlName="contact" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.contact.errors }" (keypress)="validateNumbers($event)"
+                maxlength="10" />
+            <div *ngIf="submitted && f.contact.errors" class="invalid-feedback">
+                <div *ngIf="f.contact.errors.required">Contact is required</div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary mr-2" (click)="onSave()">Save</button>
+    <button class="btn btn-secondary" (click)="activeModal.dismiss('Close click')">Close</button>
+</div>
