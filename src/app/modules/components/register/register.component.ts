@@ -51,16 +51,16 @@ export class RegisterComponent implements OnInit {
     }
     else {
       const payload = this.registerForm.value;
-      payload.isApproved = false;
-      payload.isCurrentAdmin = false;
+      payload.isApproved = false; // prevent user to login before approved
+      payload.isCurrentAdmin = false; // to check who is current admin from all users
       payload.job = '';
       payload.contact = '';
       payload.address = '';
-      payload.manageId = '';
-      this.userService.registerUsers(payload)
+      payload.manageId = ''; // to manage next immediate registered user
+      this.userService.registerUsers(payload) // to register user
         .subscribe(response => {
-          console.log(response);
-          this.updateManageId(response.id)
+          console.log(response); // fetch data of registered user
+          this.updateManageId(response.id) // pass id of registered user to update manage id of current admin
           this.toastrService.success('Registration done successfully!', 'Register', {
             positionClass: 'toast-top-right'
           });
@@ -70,6 +70,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  //updating manage id of current admin
   updateManageId(id: any) {
     this.userService.getRegisteredUsers()
     .subscribe(response => {
@@ -80,6 +81,8 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+
+ // to update the above manage id of current admin in database
   updateManageIdByRegisteredId(data: any) {
     this.userService.updateUser(data, data.id)
     .subscribe(response => {

@@ -15,7 +15,6 @@ export class UsersComponent implements OnInit {
   usersList: any[] = [];
   showLoggedInUser: any;
   userid?: string;
-  disableApprove: boolean = false;
   userInfo: any = {};
 
   constructor(private userService: UserService, private toastrService: ToastrService) { }
@@ -25,6 +24,7 @@ export class UsersComponent implements OnInit {
     this.getUserDetails();
   }
 
+  // to get current user from local storage
   getCurrentUser() {
     const currentUser = localStorage.getItem('currentUser');
     if (currentUser) {
@@ -33,28 +33,33 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  
+  // to display registered users
   getUserDetails() {
     this.userService.getRegisteredUsers().subscribe((response: any) => {
-      this.usersList = response;
-      this.userInfo = this.usersList.find(u => u.id === this.userid);
-     this.usersList = this.usersList.filter(u => u.id === this.userInfo.manageId);
+      // to get all registered users from db
+      this.usersList = response; 
+
+      //to fetch current logged in user from above data
+      this.userInfo = this.usersList.find(u => u.id === this.userid); 
+
+      // to fetch only that user who is managed by currently logged in user
+      this.usersList = this.usersList.filter(u => u.id === this.userInfo.manageId); 
     })
   }
 
-  updateOldAdmin(approverId: string) {
-    if(this.userInfo) {
+  updateOldAdmin() {
+    if (this.userInfo) {
+      // to pass the admin authority to next user
       this.userInfo.isCurrentAdmin = false;
-      this.userInfo.manageId = approverId;
     }
     this.userService.updateRegisteredUser(this.userInfo)
       .subscribe(response => {
-        //this.disableApprove = true;
       });
   }
 
+  // to approve new registered user
   onApprove(data: any) {
-   this.updateOldAdmin(data.id);
+    this.updateOldAdmin(); 
     data.isApproved = true;
     data.isCurrentAdmin = true;
     this.userService.updateRegisteredUser(data)
@@ -62,7 +67,6 @@ export class UsersComponent implements OnInit {
         this.toastrService.success('User approved successfully!', 'Approve User', {
           positionClass: 'toast-top-right'
         });
-        //this.disableApprove = true;
       });
   }
 

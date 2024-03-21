@@ -6,12 +6,51 @@
       "email": "admin@gmail.com",
       "password": "admin",
       "isApproved": true,
-      "isCurrentAdmin": true,
+      "isCurrentAdmin": false,
       "id": "XgaYfrZ",
       "job": "",
       "address": "",
       "contact": "",
-      "manageId": ""
+      "manageId": "brPlAhP"
+    },
+    {
+      "firstName": "Vrushali",
+      "lastName": "Mhetre",
+      "email": "vrushu02@gmail.com",
+      "password": "123456",
+      "isApproved": true,
+      "isCurrentAdmin": false,
+      "job": "sda",
+      "contact": "9876546532",
+      "address": "mumbai",
+      "manageId": "r6Nr0kf",
+      "id": "brPlAhP"
+    },
+    {
+      "firstName": "Prachi",
+      "lastName": "Potnis",
+      "email": "prachip@gmail.com",
+      "password": "654321",
+      "isApproved": true,
+      "isCurrentAdmin": false,
+      "job": "HR",
+      "contact": "9768564352",
+      "address": "Mumbai",
+      "manageId": "o4vaF9s",
+      "id": "r6Nr0kf"
+    },
+    {
+      "firstName": "Sabiha ",
+      "lastName": "Kureshi",
+      "email": "sabihak@gmail.com",
+      "password": "saabi",
+      "isApproved": true,
+      "isCurrentAdmin": true,
+      "job": "Tester",
+      "contact": "9785643532",
+      "address": "Nagpur",
+      "manageId": "",
+      "id": "o4vaF9s"
     }
   ]
 }

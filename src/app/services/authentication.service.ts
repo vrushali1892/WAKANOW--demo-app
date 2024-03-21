@@ -11,6 +11,7 @@ export class AuthenticationService {
   firstName: string = '';
   lastName: string = '';
   id: string = '';
+  manageId: string = '';
   
   constructor(private router: Router) {
     // Load registered users from local storage
@@ -27,18 +28,20 @@ export class AuthenticationService {
     localStorage.setItem('registeredUsers', JSON.stringify(this.registeredUsers));
   }
 
-  login(email: string, password: string, firstName: string, lastName: string, id: string): any {
+  login(email: string, password: string, firstName: string, lastName: string, id: string, manageId: string): any {
     if (email && password) {
       this.loggedIn = true;
       //localStorage.setItem('token', response.token);
       this.firstName = firstName;
       this.lastName = lastName;
       this.id = id;
+      this.manageId = manageId
       // Store user information in localStorage
       localStorage.setItem('currentUser', JSON.stringify({
         firstName: this.firstName,
         lastName: this.lastName,
-        id: this.id
+        id: this.id,
+        manageId: this.manageId
       }));
 
       return true;

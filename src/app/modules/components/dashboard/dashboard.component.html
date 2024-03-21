@@ -33,10 +33,10 @@
                             <td>{{ user.contact }}</td>
                             <td>
                                 <button type="button" class="btn btn-outline-info mr-2"
-                                    (click)="manageUsers('Edit Users', user)">
+                                    (click)="manageUsers('Edit Users', user)" [disabled]="manageId != user.id">
                                     <i class="bi bi-pencil-square" aria-hidden="true"></i></button>
 
-                                <button type="button" class="btn btn-outline-danger">
+                                <button type="button" class="btn btn-outline-danger" [disabled]="manageId != user.id">
                                     <i class="bi bi-trash" aria-hidden="true"
                                         (click)="deleteUser(user.id)"></i></button>
                             </td>
