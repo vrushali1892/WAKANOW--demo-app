@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User, UserDetails } from '../models/user.model';
+import { User } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
@@ -16,22 +16,13 @@ export class UserService {
     return this.http.post(`${this.API_URL}/registeredUsers`, data);
   }
 
-  getRegisteredUsers(): Observable<any> {
+  getRegisteredUsers(): Observable<User> {
     return this.http.get(`${this.API_URL}/registeredUsers`);
   }
 
-  getUsers(): Observable<UserDetails> {
-    return this.http.get(`${this.API_URL}/Users`)
-  }
-
-  createUser(data: UserDetails): Observable<UserDetails> {
-    return this.http.post(`${this.API_URL}/Users`, data)
-  }
-
-
-  deleteUser(id: number): Observable<UserDetails> {
+  deleteUser(id: number): Observable<User> {
     let url = `${this.API_URL}/registeredUsers/${id}`
-    return this.http.delete<any>(url)
+    return this.http.delete<User>(url)
   }
 
   updateRegisteredUser(data: any) {

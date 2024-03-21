@@ -74,7 +74,7 @@ export class RegisterComponent implements OnInit {
   //updating manage id of current admin
   updateManageId(id: any): void {
     this.userService.getRegisteredUsers()
-    .subscribe(response => {
+    .subscribe((response:any) => {
       this.registeredUsers = response;
       const currentAdminData = this.registeredUsers.find(u => u.isCurrentAdmin === true);
       currentAdminData.manageId = id;

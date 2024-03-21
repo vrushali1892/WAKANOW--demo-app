@@ -10,47 +10,21 @@
       "id": "XgaYfrZ",
       "job": "HR",
       "address": "Pune",
-      "contact": "978652413",
-      "manageId": "brPlAhP"
+      "contact": "9786524183",
+      "manageId": "fl0dopP"
     },
     {
-      "firstName": "Vrushali",
-      "lastName": "Mhetre",
-      "email": "vrushu02@gmail.com",
-      "password": "123456",
-      "isApproved": true,
-      "isCurrentAdmin": false,
-      "job": "Software Developer",
-      "contact": "9876546532",
-      "address": "Mumbai",
-      "manageId": "r6Nr0kf",
-      "id": "brPlAhP"
-    },
-    {
-      "firstName": "Prachi",
-      "lastName": "Potnis",
-      "email": "prachip@gmail.com",
-      "password": "654321",
-      "isApproved": true,
-      "isCurrentAdmin": false,
-      "job": "Assistant HR",
-      "contact": "9768564352",
-      "address": "Mumbai",
-      "manageId": "o4vaF9s",
-      "id": "r6Nr0kf"
-    },
-    {
-      "firstName": "Sabiha ",
-      "lastName": "Kureshi",
-      "email": "sabihak@gmail.com",
-      "password": "saabi",
+      "firstName": "Shraddha",
+      "lastName": "Painjane",
+      "email": "shraddhap@gmail.com",
+      "password": "shrads",
       "isApproved": true,
       "isCurrentAdmin": true,
-      "job": "Backend Developer",
-      "contact": "9785643532",
-      "address": "Nagpur",
+      "job": "Android Developer",
+      "contact": "9886755341",
+      "address": "Pune",
       "manageId": "",
-      "id": "o4vaF9s"
+      "id": "fl0dopP"
     }
   ]
 }

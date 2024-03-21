@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
   toggleType():void {
     this.showPassword = !this.showPassword;
   }
-  
+
 
   login():void {
     this.submitted = true;
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
     }
     else {
       this.userService.getRegisteredUsers()
-        .subscribe(response => {
+        .subscribe((response:any) => {
           this.registeredUsers = response;
           const enteredEmail = this.loginForm.get('email')?.value;
           const enteredPassword = this.loginForm.get('password')?.value;

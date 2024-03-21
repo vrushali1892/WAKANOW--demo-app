@@ -58,19 +58,10 @@ export class UserPopupComponent implements OnInit {
     else {
       const payload = this.usersForm.value;
 
-      if (this.data.header == 'Add User') {
-        this.userService.createUser(payload)
-          .subscribe(response => {
-            console.log(response);
-            this.activeModal.close({ submitted: this.submitted, action: 'add' });
-          });
-      }
-      else {
         this.userService.updateUser(payload, this.data.data.id)
           .subscribe(response => {
             this.activeModal.close({ submitted: this.submitted, action: 'update' });
           });
-      }
     }
   }
 }
