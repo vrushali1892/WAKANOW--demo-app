@@ -16,13 +16,14 @@ export class RegisterComponent implements OnInit {
   public showPassword: boolean = false;
   private registeredUsers: any[] = [];
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private toastrService: ToastrService) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService, 
+    private router: Router, private toastrService: ToastrService) { }
 
   ngOnInit(): void {
     this.createRegistration();
   }
 
-  createRegistration() {
+  createRegistration(): void {
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -39,11 +40,11 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  toggleType() {
+  toggleType(): void {
     this.showPassword = !this.showPassword;
   }
 
-  signUp() {
+  signUp(): void {
     this.submitted = true;
     // stop here if form is invalid
     if (this.registerForm.invalid) {
@@ -71,7 +72,7 @@ export class RegisterComponent implements OnInit {
   }
 
   //updating manage id of current admin
-  updateManageId(id: any) {
+  updateManageId(id: any): void {
     this.userService.getRegisteredUsers()
     .subscribe(response => {
       this.registeredUsers = response;
@@ -83,7 +84,7 @@ export class RegisterComponent implements OnInit {
 
 
  // to update the above manage id of current admin in database
-  updateManageIdByRegisteredId(data: any) {
+  updateManageIdByRegisteredId(data: any): void {
     this.userService.updateUser(data, data.id)
     .subscribe(response => {
       console.log(response);

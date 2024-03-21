@@ -12,19 +12,22 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DashboardComponent implements OnInit {
 
-  usersData: User[] = [];
-  userid?: string;
-  manageId?: string;
-  userInfo: any = {};
+  public usersData: User[] = [];
+  public userid?: string;
+  public manageId?: string;
+  private userInfo: any = {};
+  public tableHeader: string[] = [];
 
-  constructor(private userService: UserService, private modalService: NgbModal, private toastrService: ToastrService) { }
+  constructor(private userService: UserService, private modalService: NgbModal, private toastrService: ToastrService) {
+    this.tableHeader = ['First Name', 'Last Name', 'Email', 'Job', 'Address', 'Contact', 'Action']
+  }
 
   ngOnInit(): void {
     this.getCurrentUser();
     this.getUsers();
   }
 
-  getCurrentUser() {
+  getCurrentUser(): void {
     const currentUser = localStorage.getItem('currentUser');
     if (currentUser) {
       const user = JSON.parse(currentUser);
@@ -33,13 +36,13 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  getUsers() {
+  getUsers(): void {
     this.userService.getRegisteredUsers().subscribe((response: any) => {
       this.usersData = response;
     })
   }
 
-  manageUsers(title: string, users: any) {
+  manageUsers(title: string, users: any): void {
     const modalRef = this.modalService.open(UserPopupComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.data = {
       header: title,
@@ -63,8 +66,7 @@ export class DashboardComponent implements OnInit {
       );
   }
 
-
-  deleteUser(id: any) {
+  deleteUser(id: any): void {
     this.userService.deleteUser(id).subscribe(
       () => {
         this.getUsers();
@@ -75,5 +77,4 @@ export class DashboardComponent implements OnInit {
       (err) => console.log(err)
     );
   }
-
 }

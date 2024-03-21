@@ -19,7 +19,7 @@ export class UserPopupComponent implements OnInit {
     this.createUsers();
   }
 
-  createUsers() {
+  createUsers(): void {
     this.usersForm = this.formBuilder.group({
       firstName: ['' || this.data.data.firstName, Validators.required],
       lastName: ['' || this.data.data.lastName, Validators.required],
@@ -48,7 +48,7 @@ export class UserPopupComponent implements OnInit {
     }
   }
 
-  onSave() {
+  onSave(): void {
     this.submitted = true;
 
     // stop here if form is invalid
@@ -58,7 +58,7 @@ export class UserPopupComponent implements OnInit {
     else {
       const payload = this.usersForm.value;
 
-      if (this.data.header == 'Add Users') {
+      if (this.data.header == 'Add User') {
         this.userService.createUser(payload)
           .subscribe(response => {
             console.log(response);
@@ -66,7 +66,6 @@ export class UserPopupComponent implements OnInit {
           });
       }
       else {
-        
         this.userService.updateUser(payload, this.data.data.id)
           .subscribe(response => {
             this.activeModal.close({ submitted: this.submitted, action: 'update' });
@@ -74,5 +73,4 @@ export class UserPopupComponent implements OnInit {
       }
     }
   }
-
 }

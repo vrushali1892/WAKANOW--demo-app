@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/models/user.model';
-import { AuthenticationService } from 'src/app/services/authentication.service';
 import { UserService } from 'src/app/services/user.service';
 
 
@@ -12,10 +11,9 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UsersComponent implements OnInit {
 
-  usersList: any[] = [];
-  showLoggedInUser: any;
-  userid?: string;
-  userInfo: any = {};
+  public usersList: User[] = [];
+  private userid?: string;
+  private userInfo: any = {};
 
   constructor(private userService: UserService, private toastrService: ToastrService) { }
 
@@ -25,7 +23,7 @@ export class UsersComponent implements OnInit {
   }
 
   // to get current user from local storage
-  getCurrentUser() {
+  getCurrentUser(): void {
     const currentUser = localStorage.getItem('currentUser');
     if (currentUser) {
       const user = JSON.parse(currentUser);
@@ -34,7 +32,7 @@ export class UsersComponent implements OnInit {
   }
 
   // to display registered users
-  getUserDetails() {
+  getUserDetails(): void {
     this.userService.getRegisteredUsers().subscribe((response: any) => {
       // to get all registered users from db
       this.usersList = response; 
@@ -47,7 +45,7 @@ export class UsersComponent implements OnInit {
     })
   }
 
-  updateOldAdmin() {
+  updateOldAdmin(): void {
     if (this.userInfo) {
       // to pass the admin authority to next user
       this.userInfo.isCurrentAdmin = false;
@@ -58,7 +56,7 @@ export class UsersComponent implements OnInit {
   }
 
   // to approve new registered user
-  onApprove(data: any) {
+  onApprove(data: any): void {
     this.updateOldAdmin(); 
     data.isApproved = true;
     data.isCurrentAdmin = true;
@@ -69,5 +67,4 @@ export class UsersComponent implements OnInit {
         });
       });
   }
-
 }

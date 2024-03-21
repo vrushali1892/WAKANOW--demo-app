@@ -6,12 +6,12 @@ import { Router } from '@angular/router';
 })
 export class AuthenticationService {
 
-  loggedIn: boolean = false;
-  registeredUsers: { email: string, password: string }[] = [];
-  firstName: string = '';
-  lastName: string = '';
-  id: string = '';
-  manageId: string = '';
+  public loggedIn: boolean = false;
+  private registeredUsers: { email: string, password: string }[] = [];
+  public firstName: string = '';
+  public lastName: string = '';
+  private id: string = '';
+  private manageId: string = '';
   
   constructor(private router: Router) {
     // Load registered users from local storage
@@ -31,11 +31,11 @@ export class AuthenticationService {
   login(email: string, password: string, firstName: string, lastName: string, id: string, manageId: string): any {
     if (email && password) {
       this.loggedIn = true;
-      //localStorage.setItem('token', response.token);
       this.firstName = firstName;
       this.lastName = lastName;
       this.id = id;
-      this.manageId = manageId
+      this.manageId = manageId;
+
       // Store user information in localStorage
       localStorage.setItem('currentUser', JSON.stringify({
         firstName: this.firstName,
@@ -53,7 +53,6 @@ export class AuthenticationService {
     // Clear logged-in user from local storage and reset authentication state
     localStorage.removeItem('registeredUsers');
     localStorage.removeItem('currentUser')
-    //localStorage.removeItem('token');
     this.loggedIn = false;
     this.router.navigate(['/login']); // Redirect to login page after logout
   }

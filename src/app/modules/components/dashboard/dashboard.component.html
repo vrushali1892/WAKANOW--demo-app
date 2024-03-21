@@ -2,7 +2,7 @@
     <div class="outer-wrap my-2">
         <div class="row">
             <div class="col-md-8">
-                <!-- <button type="button" class="btn btn-primary mb-2" (click)="manageUsers('Add Users', '')"><i
+                <!-- <button type="button" class="btn btn-primary mb-2" (click)="manageUsers('Add User', '')"><i
                         class="bi bi-plus-circle" aria-hidden="true"></i>
                     Add Users</button> -->
             </div>
@@ -14,13 +14,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Job</th>
-                            <th>Address</th>
-                            <th>Contact</th>
-                            <th>Action</th>
+                            <th *ngFor="let heading of tableHeader">{{ heading }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,7 +27,7 @@
                             <td>{{ user.contact }}</td>
                             <td>
                                 <button type="button" class="btn btn-outline-info mr-2"
-                                    (click)="manageUsers('Edit Users', user)" [disabled]="manageId != user.id">
+                                    (click)="manageUsers('Edit User', user)" [disabled]="manageId != user.id">
                                     <i class="bi bi-pencil-square" aria-hidden="true"></i></button>
 
                                 <button type="button" class="btn btn-outline-danger" [disabled]="manageId != user.id">
