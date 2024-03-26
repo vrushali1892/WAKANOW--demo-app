@@ -6,25 +6,12 @@
       "email": "admin@gmail.com",
       "password": "admin",
       "isApproved": true,
-      "isCurrentAdmin": false,
+      "isCurrentAdmin": true,
       "id": "XgaYfrZ",
       "job": "HR",
       "address": "Pune",
       "contact": "9786524183",
       "manageId": "fl0dopP"
-    },
-    {
-      "firstName": "Shraddha",
-      "lastName": "Painjane",
-      "email": "shraddhap@gmail.com",
-      "password": "shrads",
-      "isApproved": true,
-      "isCurrentAdmin": true,
-      "job": "Android Developer",
-      "contact": "9886755341",
-      "address": "Pune",
-      "manageId": "",
-      "id": "fl0dopP"
     }
   ]
 }
